@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     # for django-allauth
     'django.contrib.sites',
     'allauth',
@@ -69,7 +70,10 @@ INSTALLED_APPS = [
     # django_htmx
     "django_htmx",
     # for admin_hoeypot
-    'admin_honeypot',     
+    'admin_honeypot',
+    # for media server
+    'cloudinary_storage',
+    'cloudinary',         
         
     'a_posts',
     'a_users',
@@ -181,6 +185,28 @@ STATICFILES_DIRS=[BASE_DIR / 'static']
 # for media
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# for media server
+if ENVIRONMENT == "production" or POSTGRES_LOCALLY == True:
+    STORAGES = {
+        "default": {
+            "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+            },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+            },
+    }
+else:
+    MEDIA_ROOT = BASE_DIR / 'media'
+
+CLOUDINARY_STORAGE = {
+    # 'CLOUD_NAME': 'your_cloud_name',
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    # 'API_KEY': 'your_api_key',
+    'API_KEY': env('API_KEY'),
+    # 'API_SECRET': 'your_api_secret',
+    'API_SECRET': env('API_SECRET'),    
+}
 
 # for collectstatic
 STATIC_ROOT=BASE_DIR / 'staticfiles'
