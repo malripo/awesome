@@ -81,7 +81,7 @@ INSTALLED_APPS = [
         
     'a_posts',
     'a_users',
-    'a_features',
+    'a_features'
 ]
 
 # for django-allauth
