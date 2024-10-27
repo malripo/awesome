@@ -30,7 +30,7 @@ def home_view(request, tag=None):
         return HttpResponse('')
     
     try:
-        feature_herobutton = feature_enabled(1,'Adreas')
+        feature_herobutton = feature_enabled(1,'Andreas')
     except:
         feature_herobutton = False
     
