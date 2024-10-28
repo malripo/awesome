@@ -5,7 +5,7 @@
         <p class="text-lg font-bold mb-5">Share your favorite Photos from Flickr and add a great caption</p>
         {% if not user.is_authenticated %}
             {% if feature_herobutton %}
-                <a style="background-color:#06B6D4;"
+                <a style="background-color:#f97316;"
                 class="button" href="{% url 'account_signup' %}">Create Account</a>
             {% else %}
                 <a class="button" href="{% url 'account_signup' %}">Get Started</a>
